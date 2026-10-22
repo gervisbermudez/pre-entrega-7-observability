@@ -1,0 +1,8 @@
+Proceso de Onboarding - TechCorp
+El proceso de incorporación de nuevos empleados en TechCorp dura 4 semanas y está
+compuesto por tres etapas: inducción general, capacitación específica del rol, y
+acompañamiento con un mentor asignado (buddy).
+Durante la primera semana, el nuevo empleado recibe sus credenciales de acceso, el
+equipamiento de trabajo y participa de una inducción general sobre la cultura de TechCorp.
+En la semana 4 se realiza una reunión de cierre de onboarding entre el nuevo empleado,
+su líder y Recursos Humanos.

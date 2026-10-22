@@ -1,0 +1,36 @@
+# Redis guarda la cola, el estado de cada job y los checkpoints del grafo.
+# Phoenix recibe las trazas. La API corre en el host (ver README).
+# Para meter la API en este compose: docker compose --profile full up --build
+
+services:
+  redis:
+    image: redis:8
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    ports:
+      - "6006:6006"
+      - "4317:4317"
+
+  api:
+    profiles: ["full"]
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      PHOENIX_COLLECTOR_ENDPOINT: http://phoenix:6006
+    depends_on:
+      redis:
+        condition: service_healthy
+      phoenix:
+        condition: service_started
